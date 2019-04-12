@@ -6,6 +6,9 @@
 class TimeToReadable{
 	//Converts YYYYMMDD to timestamp
 	ConvertYYYYMMDD(dateString){
+		dateString = dateString.replace(/-/g, '') //Remove - to literally parse as YYYYMMDD
+		dateString = dateString.replace(/\//g, '') //Remove / to literally parse as YYYYMMDD
+
 		var year        = dateString.substring(0,4);
 		var month       = dateString.substring(4,6);
 		var day         = dateString.substring(6,8);
