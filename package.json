@@ -1,0 +1,11 @@
+{
+  "name": "timetoreadable",
+  "version": "1.0.0",
+  "description": "Converts time formats to humanly readable formats",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Jonathon Powell",
+  "license": "ISC"
+}
