@@ -87,6 +87,36 @@ class TimeToReadable{
 
 		return dateToReturn;
 	}
+
+	//Shortens timestamp : 5 mins ago | Thu 3:26px | Jun 18
+	Shorten (timestamp) {
+		var dateToReturn = "";
+		timestamp = new Date(timestamp);
+
+		let currentDate = new Date();
+		
+		if(currentDate.getFullYear() > timestamp.getFullYear()){ //If timestamp is older than a year
+			dateToReturn += this.getMonth(timestamp).substr(0,3) + " " + timestamp.getDate() + ", " + timestamp.getFullYear(); //Jan 1, 1999
+		}
+		else{ 
+			//Only passes if is same year
+			if(currentDate.getDate() > timestamp.getDate() + 6){ //If timestamp older than 7 days
+				dateToReturn += this.getMonth(timestamp).substr(0,3) + " " + timestamp.getDate(); //Jan 1
+			}
+			else{ 
+				//Only passes if same week
+				if(currentDate.getDate() > timestamp.getDate()){ //If timestamp is from past week
+					dateToReturn += this.getWeekDay(timestamp).substr(0,3) // "Mon" for Monday
+				}
+				else{
+					//posted today
+					dateToReturn += this.getAMPM(timestamp); //12:00 AM
+				}
+			}
+		}
+
+		return dateToReturn;
+	}
 }
 
 module.exports = new TimeToReadable()
