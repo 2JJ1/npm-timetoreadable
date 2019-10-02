@@ -40,14 +40,19 @@ class TimeToReadable{
 		return days[timestamp.getDay()];
 	}
 	
-	//Beautifies timestamp in simple manner - ex: April 12, 2019
-	SimpleBeautify(timestamp) {
+	//Converts timestamp to "Date Month, Year"
+	DateMonthYear(timestamp) {
 		var dateToReturn = "";
 		timestamp = new Date(timestamp);
 
 		dateToReturn += `${this.getMonth(timestamp)} ${timestamp.getDate()}, ${timestamp.getFullYear()}`; //April 12, 2019
 
 		return dateToReturn;
+	}
+	//Deprecated
+	SimpleBeautify(timestamp){
+		console.warn("SimpleBeautify() has been deprecated. Please use DateMonthYear() instead.")
+		return DateMonthYear(timestamp)
 	}
 
 	//Beautifies timestamp
@@ -70,7 +75,7 @@ class TimeToReadable{
 				}
 				else{ //Only passes if same week
 					if(currentDate.getDate() > timestamp.getDate() + 1){ //If timestamp is from past week (Except for yesterday)
-						dateToReturn += this.getWeekDay(timestamp) + " at " + this.getAMPM(timestamp); //Monday as 12:00 AM
+						dateToReturn += this.getWeekDay(timestamp) + " at " + this.getAMPM(timestamp); //Monday at 12:00 AM
 					}
 					else{
 					   if(currentDate.getDate()-1 === timestamp.getDate()){ //If timestamp was yesterday
