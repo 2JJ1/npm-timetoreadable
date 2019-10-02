@@ -52,7 +52,7 @@ class TimeToReadable{
 	//Deprecated
 	SimpleBeautify(timestamp){
 		console.warn("SimpleBeautify() has been deprecated. Please use DateMonthYear() instead.")
-		return DateMonthYear(timestamp)
+		return this.DateMonthYear(timestamp)
 	}
 
 	//Beautifies timestamp
