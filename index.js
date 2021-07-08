@@ -103,18 +103,20 @@ class TimeToReadable{
 		if(currentDate.getFullYear() > timestamp.getFullYear()){ //If timestamp is older than a year
 			dateToReturn += this.getMonth(timestamp).substr(0,3) + " " + timestamp.getDate() + ", " + timestamp.getFullYear(); //Jan 1, 1999
 		}
+		//Only passes if is same year
 		else{ 
-			//Only passes if is same year
-			if(currentDate.getDate() > timestamp.getDate() + 6){ //If timestamp older than 7 days
+			//If timestamp older than 7 days or is another month
+			if(currentDate.getDate() > timestamp.getDate() + 6 || currentDate.getMonth() != timestamp.getMonth()){
 				dateToReturn += this.getMonth(timestamp).substr(0,3) + " " + timestamp.getDate(); //Jan 1
 			}
+			//Only passes if same week
 			else{ 
-				//Only passes if same week
-				if(currentDate.getDate() > timestamp.getDate()){ //If timestamp is from past week
+				//If timestamp is from past week
+				if(currentDate.getDate() > timestamp.getDate()){
 					dateToReturn += this.getWeekDay(timestamp).substr(0,3) // "Mon" for Monday
 				}
+				//posted today
 				else{
-					//posted today
 					dateToReturn += this.getAMPM(timestamp); //12:00 AM
 				}
 			}
