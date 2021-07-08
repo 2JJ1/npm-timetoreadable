@@ -18,6 +18,11 @@ Using NPM
 
 npm i timetoreadable
 
+
+## Example Usage
+
+const timeToReadable = require("timetoreadable)  
+timeToReadable.Beautify(new Date()) //12:00 AM  
   
 
 ## Methods
